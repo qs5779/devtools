@@ -1,11 +1,11 @@
-- #!/bin/bash
+#!/bin/bash
 # -*- Mode: Bash; tab-width: 2; indent-tabs-mode: nil -*- vim:sta:et:sw=2:ts=2:syntax=sh
 # Revision History:
 # YYYYmmdd - whoami - initial version
 #
 
 SCRIPT=$(basename "$0")
-VERSION='$Revision: 2263 $'
+VERSION='$Revision: 0.1 $' # will be replaced by svn commit # if using subversion with Revision keywords on
 VERBOSE=0
 DEBUG=0
 ERRORS=0
