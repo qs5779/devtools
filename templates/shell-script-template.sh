@@ -1,7 +1,7 @@
-#!/bin/bash
+- #!/bin/bash
 # -*- Mode: Bash; tab-width: 2; indent-tabs-mode: nil -*- vim:sta:et:sw=2:ts=2:syntax=sh
 # Revision History:
-# YYYYmmdd - quiensabe - initial version
+# YYYYmmdd - whoami - initial version
 #
 
 SCRIPT=$(basename "$0")

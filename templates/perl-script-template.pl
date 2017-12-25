@@ -2,7 +2,7 @@
 # -*- Mode: Perl; tab-width: 2; indent-tabs-mode: nil -*- vim:sta:et:sw=2:ts=2:syntax=perl
 #
 # Revision History:
-# YYYYmmdd whoami - initial version
+# YYYYmmdd - whoami - initial version
 #
 
 use strict;

@@ -3,7 +3,7 @@
 # -*- Mode: php; tab-width: 2; indent-tabs-mode: nil -*- vim:sta:et:sw=2:ts=2:syntax=php
 #
 # Revision History:
-# YYYYmmdd quiensabe - initial version
+# YYYYmmdd - whoami - initial version
 #
 */
 ?>
@@ -15,4 +15,3 @@
     <?php echo '<p>Hello World</p>'; ?>
   </body>
 </html>
-
