@@ -1,11 +1,11 @@
 #!/bin/bash
-# -*- Mode: Bash; tab-width: 2; indent-tabs-mode: nil -*- vim:sta:et:sw=2:ts=2:syntax=sh
+# -*- Mode: Bash; tab-width: 2; indent-tabs-mode: nil -*-
 # Revision History:
 # YYYYmmdd - whoami - initial version
 #
 
 SCRIPT=$(basename "$0")
-VERSION='$Revision: 0.1 $' # will be replaced by svn commit # if using subversion with Revision keywords on
+VERSION='0.1.0'
 VERBOSE=0
 DEBUG=0
 ERRORS=0
@@ -34,7 +34,7 @@ do
     ;;
     v ) ((VERBOSE+=1)) ;;
     V )
-      echo "$SCRIPT VERSION: $(echo $VERSION | awk '{ print $2 }')"
+      echo "$SCRIPT VERSION: $VERSION"
       exit 0
     ;;
     * )
@@ -63,3 +63,5 @@ function tracevar {
 
 # ERRORS=$((ERRORS+=1)) # darn ubuntu default dash shell
 exit $ERRORS
+
+# vim:sta:et:sw=2:ts=2:syntax=sh
