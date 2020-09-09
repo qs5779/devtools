@@ -1,6 +1,7 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# -*- Mode: Ruby; tab-width: 2; indent-tabs-mode: nil -*-
 # vim:sta:et:sw=2:ts=2:syntax=ruby
 #
 # Revision History:
