@@ -1,76 +1,37 @@
 #!/usr/bin/env python
 # -*- Mode: Python; tab-width: 2; indent-tabs-mode: nil -*-
-# Revision History:
-# YYYYmmdd - whoami - initial version
-#
 
-import os
 import sys
-import getopt
-
-SCRIPT = os.path.basename(__file__)
-VERSION = '0.1.0'
-VERBOSE = 0
-DEBUG = 0
-ERRORS = 0
-
-def usage():
-  text="""
-  usage: {script} [-d] [-h] [-v] [-V]
-    where:
-      -d specify debug mode
-      -h show this message and exit
-      -v add verbosity
-      -V show version and exit
-  """
-  print(text.format(script=SCRIPT))
-  sys.exit(1)
+import os.path
+from optparse import OptionParser
 
 def main():
-  global DEBUG
-  global VERBOSE
+  usage = "usage: %prog [options]"
+  parser = OptionParser(usage)
+  parser.add_option("-d", "--debug", action="count", dest="debug", default=0, help='increment debug level')
+  parser.add_option("-t", "--test", action="store_true", dest="test", default=False, help='sets test flag')
+  parser.add_option("-v", "--verbose", action="count", dest="verbose", default=0, help='increment verbosity level')
+  parser.add_option("-V", "--version", action="store_true", dest="version", default=False, help='show version and exit')
 
-  argv = sys.argv[1:]
-  try:
-    opts, args = getopt.getopt(
-      argv, "dhvV", ["debug", "help", "verbose" "version"])
+  (opts, args) = parser.parse_args()
 
-  except:
-    print("Error reading args")
+  options = vars(opts)
+  if options['debug']>1:
+    print (options)
+    print (args)
 
-  for opt, arg in opts:
-    if opt in ['-d', '--debug']:
-      DEBUG += 1
-    elif opt in ['-h', '--help']:
-      usage()
-    elif opt in ['-v', '--verbose']:
-      VERBOSE += 1
-    elif opt in ['-V', '--version']:
-      print('%s Version: %s' % (SCRIPT, VERSION))
-      sys.exit(0)
+  if options['version']:
+    basenm = os.path.basename(sys.argv[0])
+    print('%s Version: 1.0.0' % basenm)
+    exit(0)
 
-  if args and DEBUG > 0 and VERBOSE > 0:
-    print("Argument List:", args)
+  # uncomment next 3 lines to force options while debugging
+  # gettrace = getattr(sys, 'gettrace', None)
+  # if gettrace is not None and gettrace():
+  #     print('Hmm, Big Debugger is watching me')
+  
+  exit_code = 0
+  exit(exit_code)
 
 if __name__ == "__main__":
-  main()
-
-# TODO: convert to python
-# function trace {
-#   if [ $VERBOSE -ne 0 ]
-#   then
-#     echo "$1"
-#   fi
-# }
-
-# function tracevar {
-#   if [ $VERBOSE -ne 0 ]
-#   then
-#     VAR=$1
-#     VAL=$(eval echo \$$VAR)
-#     echo "${VAR}: $VAL"
-#   fi
-# }
-# END TODO
-
-sys.exit(ERRORS)
+    main()
