@@ -3,19 +3,25 @@
 
 import sys
 import os.path
-from optparse import OptionParser
+import argparse
+import textwrap
 
 def main():
-  usage = "usage: %prog [options]"
-  parser = OptionParser(usage)
-  parser.add_option("-d", "--debug", action="count", dest="debug", default=0, help='increment debug level')
-  parser.add_option("-t", "--test", action="store_true", dest="test", default=False, help='sets test flag')
-  parser.add_option("-v", "--verbose", action="count", dest="verbose", default=0, help='increment verbosity level')
-  parser.add_option("-V", "--version", action="store_true", dest="version", default=False, help='show version and exit')
+  parser = argparse.ArgumentParser(
+    # prog = 'letitdefault to basename "$0"',
+    formatter_class=argparse.RawDescriptionHelpFormatter,
+    epilog=textwrap.dedent('''\
+      aditional information:
+        Add any additional help text you like.
+      '''))
+  parser.add_argument("-d", "--debug", action="count", dest="debug", default=0, help='increment debug level')
+  parser.add_argument("-t", "--test", action="store_true", dest="test", default=False, help='sets test flag')
+  parser.add_argument("-v", "--verbose", action="count", dest="verbose", default=0, help='increment verbosity level')
+  parser.add_argument("-V", "--version", action="store_true", dest="version", default=False, help='show version and exit')
 
-  (opts, args) = parser.parse_args()
+  args = parser.parse_args()
 
-  options = vars(opts)
+  options = vars(args)
   if options['debug']>1:
     print (options)
     print (args)
@@ -29,7 +35,7 @@ def main():
   # gettrace = getattr(sys, 'gettrace', None)
   # if gettrace is not None and gettrace():
   #     print('Hmm, Big Debugger is watching me')
-  
+
   exit_code = 0
   exit(exit_code)
 
