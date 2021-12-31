@@ -14,6 +14,9 @@ def main():
       aditional information:
         Add any additional help text you like.
       '''))
+  # the next two lines are positional arguments
+  parser.add_argument("infile", help='specify path to input file')
+  parser.add_argument("outfile", help='specify path to output file')
   parser.add_argument("-d", "--debug", action="count", dest="debug", default=0, help='increment debug level')
   parser.add_argument("-t", "--test", action="store_true", dest="test", default=False, help='sets test flag')
   parser.add_argument("-v", "--verbose", action="count", dest="verbose", default=0, help='increment verbosity level')
