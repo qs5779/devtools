@@ -4,7 +4,7 @@
 import sys
 from pathlib import Path
 import argparse
-import textwrap
+# import textwrap
 
 VERSION = '1.0.0'
 
@@ -12,11 +12,12 @@ def main():
   """This is the main function."""
   parser = argparse.ArgumentParser(
     # prog = 'letitdefault to basename "$0"',
-    formatter_class=argparse.RawDescriptionHelpFormatter,
-    epilog=textwrap.dedent('''\
-      aditional information:
-        Add any additional help text you like.
-      '''))
+    # formatter_class=argparse.RawDescriptionHelpFormatter,
+    # epilog=textwrap.dedent('''\
+    #   aditional information:
+    #     Add any additional help text you like.
+    #   ''')
+  )
   # the next two lines are positional arguments
   parser.add_argument("infile", help='specify path to input file')
   parser.add_argument("outfile", help='specify path to output file')
