@@ -1,5 +1,4 @@
 #!/bin/bash
-# -*- Mode: Bash; tab-width: 2; indent-tabs-mode: nil -*-
 # Revision History:
 # YYYYmmdd - whoami - initial version
 #
@@ -55,12 +54,14 @@ function trace {
 function tracevar {
   if [ $VERBOSE -ne 0 ]
   then
-    VAR=$1
-    VAL=$(eval echo \$$VAR)
-    echo "${VAR}: $VAL"
+    local var val
+    var=$1
+    val=$(eval echo \$"$var")
+    echo "${var}: $val"
   fi
 }
 
+# tracevar ERRORS
 # ERRORS=$((ERRORS+=1)) # darn ubuntu default dash shell
 exit $ERRORS
 
