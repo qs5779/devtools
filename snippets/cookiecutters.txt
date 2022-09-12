@@ -1,0 +1,2 @@
+cookiecutter https://github.com/karec/cookiecutter-flask-restful
+cookiecutter https://github.com/nvie/cookiecutter-python-cli.git
