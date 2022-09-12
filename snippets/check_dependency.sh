@@ -6,7 +6,7 @@ SCRIPT=$(basename "$0")
 
 function check_dependency {
   typeset D="$1"
-  
+
   if ( which "$D" 2>&1 | grep -e "^which: no " -e "^no ")
   then
     echo "${SCRIPT}: Aborting - unable to resolve dependency: $D" >&2
