@@ -9,7 +9,7 @@ VERBOSE=0
 DEBUG=0
 ERRORS=0
 
-function usage {
+usage() {
   cat << EOM
 usage: $SCRIPT [-d] [-h] [-v] [-V]
   where:
@@ -44,14 +44,14 @@ do
 done
 shift $((OPTIND - 1))
 
-function trace {
+trace() {
   if [ $VERBOSE -ne 0 ]
   then
     echo "$1"
   fi
 }
 
-function tracevar {
+tracevar() {
   if [ $VERBOSE -ne 0 ]
   then
     local var val
