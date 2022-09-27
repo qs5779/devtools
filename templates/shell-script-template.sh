@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+# shellcheck shell=dash
 # Revision History:
 # YYYYmmdd - whoami - initial version
 #
@@ -25,13 +26,13 @@ while getopts ":dhvV" opt
 do
   case "$opt" in
     d )
-      ((DEBUG+=1))
-      ((VERBOSE+=1))
+      DEBUG=$((DEBUG+1))
+      VERBOSE=$((VERBOSE+1))
     ;;
     h )
       usage
     ;;
-    v ) ((VERBOSE+=1)) ;;
+    v ) VERBOSE=$((VERBOSE+1)) ;;
     V )
       echo "$SCRIPT VERSION: $VERSION"
       exit 0
