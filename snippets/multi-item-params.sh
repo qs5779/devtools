@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+# shellcheck shell=dash
 # vim:sta:et:sw=2:ts=2:syntax=sh
 #
 
@@ -8,9 +9,9 @@ VERBOSE=0
 DEBUG=0
 ENVIRONMENTS=''
 
-function add_environment {
-  typeset I="$1"
-  typeset D="${2:- }" #delimeter could be any char,default space
+add_environment() {
+  local I="$1"
+  local D="${2:- }" #delimeter could be any char,default space
 
   if [ -n "$I" ]
   then
@@ -26,7 +27,7 @@ function add_environment {
   fi
 }
 
-function usage {
+usage() {
   cat << EOM
 usage: $SCRIPT [-d] [-e editor] [-h] [-v] [-V]
   where:
@@ -43,8 +44,8 @@ while getopts ":de:hvV" opt
 do
   case "$opt" in
     d )
-      ((DEBUG+=1))
-      ((VERBOSE+=1))
+      DEBUG=$((DEBUG+=1))
+      VERBOSE=$((VERBOSE+=1))
     ;;
     e )
       add_environment "${OPTARG}"
@@ -52,7 +53,7 @@ do
     h )
       usage
     ;;
-    v ) ((VERBOSE+=1)) ;;
+    v ) VERBOSE=$((VERBOSE+=1)) ;;
     V )
       echo "$SCRIPT VERSION: $(echo "$VERSION" | awk '{ print $2 }')"
       exit 0
