@@ -70,8 +70,8 @@ def main():
         sys.exit(0)
 
     exit_code = 0
-    sys.exit(exit_code)
+    return exit_code
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
