@@ -10,7 +10,9 @@ VERBOSE=0
 DEBUG=0
 ERRORS=0
 
+# shellcheck disable=SC2119,SC2120
 usage() {
+  [ -n "$1" ] && printf "%s\n" "$1" >&2
   cat << EOM
 usage: $SCRIPT [-d] [-h] [-v] [-V]
   where:
