@@ -40,8 +40,7 @@ do
       exit 0
     ;;
     * )
-      echo "Unexpected option \"$opt\""
-      usage
+      usage "Unexpected option \"$opt\""
     ;;
   esac
 done
