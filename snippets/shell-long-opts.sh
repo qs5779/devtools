@@ -15,27 +15,27 @@ usage() {
   cat << EOM
 usage: $SCRIPT [-d] [--debugfile file] [-h] [--minheap size] [--maxheap size] [-v] [-V]
   where:
-    -d|--debug   specify debug mode
-    --debugfile  specify debugfile
-    -h|--help    show this message and exit
-    --minheap    specify minimum java heap size
-    --maxheap    specify maximum java heap size
-    -v|--verbose add verbosity
-    -V|--Version show version and exit
+    -d | --debug     => specify debug mode
+         --debugfile => specify debugfile
+    -h | --help      => show this message and exit
+         --minheap   => specify minimum java heap size
+         --maxheap   => specify maximum java heap size
+    -v | --verbose   => add verbosity
+    -V | --version   => show version and exit
 EOM
   exit 1
 }
 
 # https://stackoverflow.com/questions/402377/using-getopts-to-process-long-and-short-command-line-options
-# NOTE: This requires getopt.  On Mac OS X and FreeBSD, you have to install this separately
-TEMP=$(getopt -o dhvV: --long debug,help,verbose,version:,debugfile:,minheap:,maxheap: \
-              -n 'javawrap' -- "$@")
+# NOTE: This requires GNU getopt.  On Mac OS X and FreeBSD, you have to install this separately
+TEMP=$(getopt -o dhvV --long debug,help,verbose,version,debugfile:,minheap:,maxheap: \
+              -- "$@")
 
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 
-echo "TEMP: $TEMP"
-# Note the quotes around '$TEMP': they are essential!
-eval set -- "$TEMP"
+# echo "TEMP: $TEMP"
+# # Note the quotes around '$TEMP': they are essential!
+# eval set -- "$TEMP"
 
 VERBOSE=false
 DEBUG=false
@@ -48,7 +48,6 @@ while true; do
     -V | --version ) echo "VERSION: $VERSION" ; exit ;;
     -v | --verbose ) VERBOSE=true; shift ;;
     -d | --debug ) DEBUG=true; shift ;;
-    -m | --memory ) MEMORY="$2"; shift 2 ;;
     --debugfile ) DEBUGFILE="$2"; shift 2 ;;
     --minheap )
       JAVA_MISC_OPT="$JAVA_MISC_OPT -XX:MinHeapFreeRatio=$2"; shift 2 ;;
