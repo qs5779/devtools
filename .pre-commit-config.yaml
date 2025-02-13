@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
+  rev: v5.0.0
   hooks:
   - id: trailing-whitespace
   - id: check-added-large-files
@@ -20,24 +20,24 @@ repos:
     args: ['--branch', 'main']
 
 - repo: 'https://github.com/gruntwork-io/pre-commit'
-  rev: v0.1.17
+  rev: v0.1.25
   hooks:
   - id: 'shellcheck'
-    stages: [commit]
+    stages: [pre-commit]
     #args: ["--enable require-variable-braces,deprecate-which"]
 
 - repo: https://github.com/psf/black
-  rev: 22.8.0 #stable 0
+  rev: 25.1.0 #stable 0
   hooks:
   - id: black
-    stages: [commit]
+    stages: [pre-commit]
     language_version: python3
 
 - repo: https://github.com/PyCQA/flake8
-  rev: 5.0.4
+  rev: 7.1.1
   hooks:
   - id: flake8
-    stages: [commit]
+    stages: [pre-commit]
     args: ['--max-line-length=88']
   ## You can add flake8 plugins via `additional_dependencies`:
   #  additional_dependencies: [flake8-bugbear]
@@ -54,14 +54,14 @@ repos:
       args: ['--filter-files']
       minimum_pre_commit_version: '2.9.2'
       additional_dependencies: ['isort==5.10.1']
-      stages: [commit]
+      stages: [pre-commit]
     - id: encryption-check
       name: Ansible Vault Encryption Check
       description: Checks that vault files are encrypted
       entry: /usr/local/bin/encryption-check.sh
       files: ((^|/)vault|vault.y[a]{0,1}ml$|.vault$)
       language: script
-      stages: [commit]
+      stages: [pre-commit]
     - id: commit-msg
       name: conventional commit messages
       language: pygrep
