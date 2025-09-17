@@ -4,6 +4,11 @@
 # YYYYmmdd - whoami - initial version
 #
 
+set -e
+for arg in "$@"; do
+    [ "$arg" = "-d" ] && set -x && break
+done
+
 SCRIPT=$(basename "$0")
 VERSION='0.1.0'
 VERBOSE=0
@@ -46,24 +51,33 @@ do
 done
 shift $((OPTIND - 1))
 
+debug() {
+  [ "$DEBUG" -ne 0 ] && return 0
+  return 1
+}
+
+verbose() {
+  [ "$VERBOSE" -ne 0 ] && return 0
+  return 1
+}
+
 trace() {
-  if [ $VERBOSE -ne 0 ]
-  then
-    echo "$1"
-  fi
+  verbose && echo "$1"
 }
 
 tracevar() {
-  if [ $VERBOSE -ne 0 ]
-  then
-    local var val
+  if verbose ; then
+    local var=
+    local val=
     var=$1
     val=$(eval echo \$"$var")
     echo "${var}: $val"
   fi
 }
 
-# tracevar ERRORS
+debug && trace "Debug is on"
+trace "Hello World"
+tracevar ERRORS
 # ERRORS=$((ERRORS+=1)) # darn ubuntu default dash shell
 exit $ERRORS
 
