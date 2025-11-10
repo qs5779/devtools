@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import click
+
 
 class Cls:
     counter = 0
@@ -9,7 +11,7 @@ class Cls:
         Cls.counter += 1
 
     def count(self):
-        print(f"name: {self.name}, count: {Cls.counter}")
+        click.echo(f"name: {self.name}, count: {Cls.counter}")
 
 
 first = Cls("first")
