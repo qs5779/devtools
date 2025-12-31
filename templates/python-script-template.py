@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# -*- Mode: Python; tab-width: 2; indent-tabs-mode: nil -*-
+# -*- Mode: Python; tab-width: 4; indent-tabs-mode: nil -*-
 """Python_script_template module."""
+import argparse
 import sys
 from pathlib import Path
-import argparse
 
 # import textwrap
 
