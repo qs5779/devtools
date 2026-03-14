@@ -31,13 +31,13 @@ repos:
       # args: ["--enable require-variable-braces,deprecate-which"]
 
   - repo: https://github.com/pycqa/isort
-    rev: 7.0.0
+    rev: 8.0.1
     hooks:
       - id: isort
         name: isort (python)
 
   - repo: https://github.com/psf/black
-    rev: 25.12.0  # stable 0
+    rev: 26.3.1  # stable 0
     hooks:
       - id: black
         language_version: python3
@@ -50,11 +50,11 @@ repos:
           '--max-line-length=88',
           '--exclude=attic/*,files/cloudflare/*'
         ]
-        additional_dependencies: [wemake-python-styleguide >= 1.4.0]
+        additional_dependencies: [wemake-python-styleguide >= 1.6.1]
 
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.11.0
+    rev: v4.13.9
     hooks:
       - id: commitizen
         stages: [commit-msg]
