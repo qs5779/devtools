@@ -21,8 +21,8 @@ repos:
       - id: requirements-txt-fixer
       - id: mixed-line-ending
         args: ['--fix=auto']  # replace 'auto' with 'lf' to enforce Linux/Mac line endings or 'crlf' for Windows
-      - id: no-commit-to-branch
-        args: ['--branch', 'main']
+      # - id: no-commit-to-branch
+      #   args: ['--branch', 'main']
 
   - repo: 'https://github.com/gruntwork-io/pre-commit'
     rev: v0.1.30
@@ -30,17 +30,11 @@ repos:
       - id: 'shellcheck'
       # args: ["--enable require-variable-braces,deprecate-which"]
 
-  - repo: https://github.com/pycqa/isort
-    rev: 8.0.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.0  # Specify the Ruff version
     hooks:
-      - id: isort
-        name: isort (python)
-
-  - repo: https://github.com/psf/black
-    rev: 26.3.1  # stable 0
-    hooks:
-      - id: black
-        language_version: python3
+      - id: ruff-check  # Linter hook
+      - id: ruff-format  # Formatter hook
 
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
@@ -52,9 +46,8 @@ repos:
         ]
         additional_dependencies: [wemake-python-styleguide >= 1.6.1]
 
-
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.13.9
+    rev: v4.16.5
     hooks:
       - id: commitizen
         stages: [commit-msg]
