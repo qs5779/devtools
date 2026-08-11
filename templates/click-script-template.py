@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- Mode: Python; tab-width: 4; indent-tabs-mode: nil -*-
 """Click_script_template module."""
+
 import sys
-from types import MappingProxyType
 
 import click
 
-CONTEXT_SETTINGS = MappingProxyType({"help_option_names": ["-h", "--help"]})
 VERSION = "1.0.0"
 
 
-@click.command(context_settings=CONTEXT_SETTINGS)
+@click.command(context_settings={"help_option_names": ["-h", "--help"]})
 @click.version_option(VERSION)
 def main():
     """This is the main function."""
