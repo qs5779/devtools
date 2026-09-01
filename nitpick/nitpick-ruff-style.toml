@@ -9,7 +9,7 @@
 ["setup.cfg".flake8]
 format = "wemake"
 show-source = true
-ignore = "PT001,D401,WPS102,WPS237"
+ignore = "PT001,D401,W503,WPS102,WPS237"
 # Plugins:
 max-line-length = 88
 max-complexity = 6
